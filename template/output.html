@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Output</title>
+</head>
+<body>
+	{% if training_data and testing_data %}
+		<h2>Training Data</h2>
+		<table>
+			<thead>
+				<tr>
+					{% for col in training_data.columns %}
+						<th>{{ col }}</th>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for i, row in training_data.iterrows() %}
+					<tr>
+						{% for col in training_data.columns %}
+							<td>{{ row[col] }}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+				{% for index, row in training_data.iterrows() %}
+  					{{ index }}: {{ row['G1'] }}, {{ row['G2'] }}, {{ row['G3'] }}, {{ row['Final Result'] }}
+				{% endfor %}
+
+			</tbody>
+		</table>
+
+		<h2>Testing Data</h2>
+		<table>
+			<thead>
+				<tr>
+					{% for col in testing_data.columns %}
+						<th>{{ col }}</th>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for i, row in testing_data.iterrows() %}
+					<tr>
+						{% for col in testing_data.columns %}
+							<td>{{ row[col] }}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+
+	{% if success_message %}
+		<p>{{ success_message }}</p>
+	{% endif %}
+</body>
+</html>

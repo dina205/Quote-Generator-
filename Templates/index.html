@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Upload CSV file and preprocess it</title>
+</head>
+<body>
+	<h1>Upload CSV file and preprocess it</h1>
+	<form method="POST" enctype="multipart/form-data">
+		<label for="csv_file">Select CSV file:</label>
+		<input type="file" name="csv_file" id="csv_file">
+		<input type="submit" value="Upload">
+	</form>
+	{% if data is not none %}
+		<h2>Preprocessed data:</h2>
+		<table>
+			<thead>
+				<tr>
+					{% for col in data.columns %}
+						<th>{{ col }}</th>
+					{% endfor %}
+				</tr>
+			</thead>
+			<tbody>
+				{% for index, row in data.iterrows() %}
+					<tr>
+						{% for value in row %}
+							<td>{{ value }}</td>
+						{% endfor %}
+					</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	{% endif %}
+</body>
+</html>

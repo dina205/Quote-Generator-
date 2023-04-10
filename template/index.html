@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Student Data</title>
+</head>
+<body>
+	<h1>Student Data</h1>
+	<table>
+		<thead>
+			<tr>
+				<th>Student ID</th>
+				<th>G1</th>
+				<th>G2</th>
+				<th>G3</th>
+				<th>Final Result</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for index, row in data.iterrows() %}
+			<tr>
+				<td>{{ row['Student ID'] }}</td>
+				<td>{{ row['G1'] }}</td>
+				<td>{{ row['G2'] }}</td>
+				<td>{{ row['G3'] }}</td>
+				<td>{{ row['Final Result'] }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</body>
+</html>
